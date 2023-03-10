@@ -1,0 +1,21 @@
+body{
+    background-image:url('download\ \(2\).jpg') ;
+    background-size: cover;
+}
+.heading
+{
+font-size: 23px;
+width: 100%;
+margin: 0px;
+}
+
+#status,#nobj,#opc
+{
+font-size: 18px;
+}
+canvas
+{
+box-shadow: 10px 10px 10px #696969;
+border-radius: 5px;
+margin-top: 3px;
+}
