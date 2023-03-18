@@ -32,26 +32,17 @@ function gotResult(error, results){
 }
 function draw(){
     image(video,0,0,540,320) ;
-    // fill("#FF0000")
-    // text("dog",45,75)
-    // noFill()
-    // stroke("#FF0000")
-    // rect(30,60,450,350);
-
-    // fill("#FF0000")
-    // text("cat",285,75)
-    // noFill()
-    // stroke("#FF0000")
-    // rect(270,60,300,350)
 
     if(status != ""){
         red = random(255)
         blue = random(255)
         green = random(255)
+        objDetector.detect(video,gotResult)
         for(var i = 0; i < objects.length; i++){
-            if(objects.length >= 1){
-                document.getElementById("status").innerHTML = "status: objeto detectado"   
+            if(objects[i].label == "person"){
                 document.getElementById("bbd").innerHTML = "bebê encontrado"+objects.length   
+            }else{
+                document.getElementById("bbd").innerHTML = "bebê não encontrado"
             }
             fill(red, green, blue)
             percente = floor(objects[i].confidence*100)
@@ -59,6 +50,9 @@ function draw(){
             noFill()
             stroke(red, green, blue)
             rect(objects[i].x ,objects[i].y ,objects[i].width ,objects[i].height)
+        }
+        if(objects.length == 0){
+            alert("bebê fora de alcance")
         }
     }
 }
